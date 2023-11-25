@@ -41,6 +41,8 @@
 *.su
 *.idb
 *.pdb
+/output/
+*.DS_Store
 
 # Kernel Module Compile Results
 *.mod*
@@ -50,3 +52,10 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# .vscode removed
+/.vscode/
+
+#IDEA removed
+/.idea/
+/venv/
