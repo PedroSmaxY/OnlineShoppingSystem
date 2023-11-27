@@ -90,10 +90,10 @@ int main()
     printf("\nValor do Produto: R$ %.2f\n", valorProduto);
 
     printf("Região: %s\n", regiao == 1   ? "Norte"
-                           : regiao == 2 ? "Nordeste"
-                           : regiao == 3 ? "Sudeste"
-                           : regiao == 4 ? "Sul"
-                                         : "Região inválida");
+    : regiao == 2 ? "Nordeste"
+    : regiao == 3 ? "Sudeste"
+    : regiao == 4 ? "Sul"
+    : "Região inválida");
 
     printf("Valor do Frete: R$ %.2f\n", valorFrete);
     printf("Valor Total da Compra: R$ %.2f\n", totalCompra);
