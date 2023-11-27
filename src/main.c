@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <locale.h>
+#include <ctype.h>
 #include <time.h>
 
 int calcularFrete(char regiao, float peso)
@@ -45,14 +46,20 @@ int main()
 {
     setlocale(LC_ALL, "");
 
-    char regiao, regiaoString[2];
+    char regiao, regiaoString[1];
     float peso, valorProduto;
+    
 
     printf("\nInforme a região [ S, SE, N, NE ]: ");
-    scanf("%s", regiaoString);
+    scanf(" %s", regiaoString);
 
-    regiao = (strcmp(regiaoString, "NE") == 0 || strcmp(regiaoString, "ne") == 0 ? 'O'
-    : strcmp(regiaoString, "SE") == 0 || strcmp(regiaoString, "se") == 0 ? 'E'
+    for (int i = 0; i < regiaoString[i]; i++)
+    {
+        regiaoString[i] = toupper(regiaoString[i]);
+    }
+
+    regiao = (strcmp(regiaoString, "NE") == 0 ? 'O'
+    : strcmp(regiaoString, "SE") == 0 ? 'E'
     : regiaoString[0]);
 
     printf("\nDigite o peso do produto em Kg: ");
@@ -80,11 +87,8 @@ int main()
     printf("Data e Hora da Compra: %d/%d/%d %d:%d\n", data->tm_mday, data->tm_mon + 1, data->tm_year + 1900, data->tm_hour, data->tm_min);
     printf("\nValor do Produto: R$ %.2f\n", valorProduto);
 
-    printf("Região: %s\n", strcmp(regiaoString, "NE") == 0 || strcmp(regiaoString, "ne") == 0 ? "Nordeste"
-    : strcmp(regiaoString, "SE") == 0 || strcmp(regiaoString, "se") == 0 ? "Sudeste" 
-    : strcmp(regiaoString, "S") == 0 || strcmp(regiaoString, "s") == 0 ? "Sul" 
-    : strcmp(regiaoString, "N") == 0 || strcmp(regiaoString, "n") == 0 ? "Norte"
-    : "Região não reconhecida");
+    printf("Região: %s\n", regiaoString);
+
 
     printf("Valor do Frete: R$ %.2f\n", valorFrete);
     printf("Valor Total da Compra: R$ %.2f\n", totalCompra);
