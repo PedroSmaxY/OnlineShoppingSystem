@@ -1,28 +1,23 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <locale.h>
-#include <ctype.h>
-#include <time.h>
 
-int calcularFrete(char regiao, float peso)
+int calcularFrete(int regiao, float peso)
 {
     float fretePadrao, fretePeso;
     switch (regiao)
     {
-    case 'N':
+    case 1:
         fretePadrao = 35.00;
         fretePeso = 50.00;
         break;
-    case 'O':
+    case 2:
         fretePadrao = 40.00;
         fretePeso = 60.00;
         break;
-    case 'S':
+    case 3:
         fretePadrao = 30.00;
         fretePeso = 50.00;
         break;
-    case 'E':
+    case 4:
         fretePadrao = 25.00;
         fretePeso = 45.00;
         break;
@@ -49,18 +44,7 @@ struct produto
     float preco;
 };
 
-struct produto produtos[10] = {
-    {1, "Arroz", 10.00},
-    {2, "Feijão", 8.00},
-    {3, "Macarrão", 5.00},
-    {4, "Farinha", 4.00},
-    {5, "Açúcar", 3.00},
-    {6, "Café", 6.00},
-    {7, "Óleo", 7.00},
-    {8, "Sal", 2.00},
-    {9, "Leite", 3.00},
-    {10, "Manteiga", 5.00},
-};
+
 
 void escolherProdutos(struct produto produtos[], int *quantidade)
 {
