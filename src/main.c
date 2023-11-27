@@ -49,7 +49,6 @@ int main()
     char regiao, regiaoString[1];
     float peso, valorProduto;
     
-
     printf("\nInforme a região [ S, SE, N, NE ]: ");
     scanf(" %s", regiaoString);
 
