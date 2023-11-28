@@ -1,5 +1,5 @@
 // Inclui o arquivo de cabeçalho que contém as bibliotecas, definições e funções necessárias
-#include "../include/dados_operacoes.h"
+#include "../Include/dados_operacoes.h"
 
 // Função principal do programa
 int main()
