@@ -24,7 +24,7 @@ int main()
     t = time(NULL);
     data = localtime(&t);
 
-    sprintf(compra.dataHoraCompra, "%02d/%02d/%d %d:%d", data->tm_mday, data->tm_mon + 1, data->tm_year + 1900, data->tm_hour, data->tm_min);
+    sprintf(compra.dataHoraCompra, "%02d/%02d/%d %02d:%02d", data->tm_mday, data->tm_mon + 1, data->tm_year + 1900, data->tm_hour, data->tm_min);
 
     data->tm_mday += 7;
     mktime(data);
