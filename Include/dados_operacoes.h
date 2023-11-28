@@ -143,11 +143,11 @@ void selecionarProdutos(Compra *compra, Produto listaProdutos[], int tamanho)
 // Função para limpar o console (dependente do sistema operacional)
 void limparConsole()
 {
-#ifdef _WIN32
-    system("cls");
-#else
-    system("clear");
-#endif
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
 }
 
 // Finaliza o pré-processamento condicional
