@@ -8,7 +8,7 @@ int main()
         {"Produto B", 30.0, 3.0},
         {"Produto C", 15.0, 0.5}};
 
-    Compra compra = { .quantidadeProdutos = 0, .precoTotal = 0.0, .precoFrete = 0.0 };
+    Compra compra = {.quantidadeProdutos = 0, .precoTotal = 0.0, .precoFrete = 0.0};
 
     exibirListaProdutos(listaProdutos, sizeof(listaProdutos) / sizeof(listaProdutos[0]));
     selecionarProdutos(&compra, listaProdutos, sizeof(listaProdutos) / sizeof(listaProdutos[0]));
@@ -17,13 +17,14 @@ int main()
 
     compra.regiao = solicitarRegiao();
     compra.precoFrete = calcularFrete(compra.produtos[0].peso, compra.regiao); // Supondo que o peso do primeiro produto seja representativo
+    compra.precoTotal += compra.precoFrete;
 
     time_t t;
     struct tm *data;
     t = time(NULL);
     data = localtime(&t);
 
-    sprintf(compra.dataHoraCompra, "%02d/%02d/%d", data->tm_mday, data->tm_mon + 1, data->tm_year + 1900);
+    sprintf(compra.dataHoraCompra, "%02d/%02d/%d %d:%d", data->tm_mday, data->tm_mon + 1, data->tm_year + 1900, data->tm_hour, data->tm_min);
 
     data->tm_mday += 7;
     mktime(data);
@@ -37,8 +38,9 @@ int main()
     {
         printf("- %s - R$ %.2f\n", compra.produtos[i].nome, compra.produtos[i].preco);
     }
-    printf("Preco total: R$ %.2f\n", compra.precoTotal);
+
     printf("Frete: R$ %.2f\n", compra.precoFrete);
+    printf("Preco total: R$ %.2f\n", compra.precoTotal);
     printf("Data e hora da compra: %s\n", compra.dataHoraCompra);
     printf("Previsao de chegada: %s\n", compra.previsaoChegada);
 
