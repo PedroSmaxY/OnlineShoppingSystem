@@ -14,7 +14,8 @@ typedef struct
 } Produto;
 
 // Definindo a estrutura para a compra
-typedef struct {
+typedef struct 
+{
     Produto produtos[10]; // Array de produtos
     int quantidadeProdutos;
     double precoProdutos;
