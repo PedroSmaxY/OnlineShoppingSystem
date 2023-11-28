@@ -70,7 +70,7 @@ int main()
     printf("\n----------------------------------------\n");
     printf("Resumo da Compra");
     printf("\n----------------------------------------\n");
-    printf("Região: %s", compra.regiao == 1 ? "Norte" 
+    printf("Regiao: %s", compra.regiao == 1 ? "Norte" 
     : compra.regiao == 2 ? "Nordeste"
     : compra.regiao == 3 ? "Sul" 
     : "Sudeste");
