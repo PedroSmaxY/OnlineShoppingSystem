@@ -118,7 +118,6 @@ void selecionarProdutos(Compra *compra, Produto listaProdutos[], int tamanho)
     while (1)
     {
         printf("Produto: ");
-        limparBufferEntrada();
         int resultado = scanf("%d", &escolha);
         if (resultado == 1)
         {
@@ -138,6 +137,7 @@ void selecionarProdutos(Compra *compra, Produto listaProdutos[], int tamanho)
                 compra->quantidadeProdutos++;
             }
         }
+        limparBufferEntrada();
     }
 }
 
