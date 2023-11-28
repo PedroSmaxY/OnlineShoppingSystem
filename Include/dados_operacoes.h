@@ -1,6 +1,8 @@
+// Evita que o arquivo de cabeçalho seja incluído múltiplas vezes durante a compilação
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
+// Inclui as bibliotecas necessárias
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -33,6 +35,8 @@ typedef struct
 float calcularFrete(float peso, int regiao)
 {
     float fretePadrao, fretePeso;
+
+    // Calcula os valores do frete com base na região
     switch (regiao)
     {
     case 1:
@@ -56,6 +60,8 @@ float calcularFrete(float peso, int regiao)
         return -1; // Retorna -1 se a região for inválida
         break;
     }
+
+    // Retorna o valor do frete com base no peso
     if (peso <= 2)
     {
         return fretePadrao;
@@ -125,6 +131,7 @@ void selecionarProdutos(Compra *compra, Produto listaProdutos[], int tamanho)
     }
 }
 
+// Função para limpar o console (dependente do sistema operacional)
 void limparConsole()
 {
 #ifdef _WIN32
@@ -134,11 +141,12 @@ void limparConsole()
 #endif
 }
 
+// Função para limpar o buffer de entrada do teclado
 void limparBufferEntrada()
 {
     int c;
     while ((c = getchar()) != '\n' && c != EOF)
         ;
 }
-
-#endif // FUNCTIONS_H
+// Finaliza o pré-processamento condicional
+#endif
