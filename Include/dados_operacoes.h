@@ -37,6 +37,16 @@ void limparBufferEntrada()
     while ((c = getchar()) != '\n' && c != EOF);
 }
 
+// Função para limpar o console
+void limparConsole()
+{
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
+}
+
 // Função para calcular o preço do frete
 float calcularFrete(Compra compra)
 {
@@ -100,6 +110,7 @@ int solicitarRegiao()
     limparBufferEntrada();
     if (regiao < 1 || regiao > 4)
     {
+        limparConsole();
         printf("Região inválida. Tente novamente.\n");
         return solicitarRegiao(); // Chama recursivamente se a região for inválida
     }
@@ -151,18 +162,12 @@ void selecionarProdutos(Compra *compra, Produto listaProdutos[], int tamanho)
                 compra->precoTotal += listaProdutos[escolha - 1].preco;
             }
         }
+        else
+        {
+            printf("Número de produto inválido. Tente novamente.\n");
+        }
         limparBufferEntrada();
     }
-}
-
-// Função para limpar o console
-void limparConsole()
-{
-    #ifdef _WIN32
-        system("cls");
-    #else
-        system("clear");
-    #endif
 }
 
 // Finaliza o pré-processamento condicional
