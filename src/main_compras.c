@@ -17,7 +17,7 @@ int main()
         {6, "Cafe", 6.00, 0.6},
         {7, "Oleo", 7.00, 1},
         {8, "Sal", 2.00, 2.5},
-        {9, "Leit e", 3.00, 1},
+        {9, "Leite", 3.00, 1},
         {10, "Manteiga", 5.00, 0.3}};
 
     // Limpa o console
