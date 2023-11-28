@@ -10,12 +10,12 @@ int main()
     // Lista de produtos disponíveis com seus códigos, nomes, preços e pesos
     Produto listaProdutos[] = {
         {1, "Arroz", 10.00, 1},
-        {2, "Feijão", 8.00, 1},
-        {3, "Macarrão", 5.00, 0.5},
+        {2, "Feijao", 8.00, 1},
+        {3, "Macarrao", 5.00, 0.5},
         {4, "Farinha", 4.00, 0.5},
-        {5, "Açúcar", 3.00, 2.1},
-        {6, "Café", 6.00, 0.6},
-        {7, "Óleo", 7.00, 1},
+        {5, "Peixe", 3.00, 2.1},
+        {6, "Cafe", 6.00, 0.6},
+        {7, "Oleo", 7.00, 1},
         {8, "Sal", 2.00, 2.5},
         {9, "Leite", 3.00, 1},
         {10, "Manteiga", 5.00, 0.3}};
@@ -90,7 +90,7 @@ int main()
     printf("\nValor total: R$%.2f", compra.precoTotal);
     printf("\n----------------------------------------\n");
     printf("Data e hora da compra: %s\n", compra.dataHoraCompra);
-    printf("Previsâo de chegada: %s", compra.previsaoChegada);
+    printf("Previsao de chegada: %s", compra.previsaoChegada);
     printf("\n----------------------------------------\n");
     return 0;
 }
