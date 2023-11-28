@@ -5,7 +5,6 @@
 // Inclui as bibliotecas necessárias
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <locale.h>
 #include <time.h>
 
@@ -31,27 +30,35 @@ typedef struct
     char previsaoChegada[20];
 } Compra;
 
+// Função para limpar o buffer de entrada do teclado
+void limparBufferEntrada()
+{
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF)
+        ;
+}
+
 // Função para calcular o preço do frete
-float calcularFrete(float peso, int regiao)
+float calcularFrete(Compra compra)
 {
     float fretePadrao, fretePeso;
 
     // Calcula os valores do frete com base na região
-    switch (regiao)
+    switch (compra.regiao)
     {
-    case 1:
+    case 1: // Norte
         fretePadrao = 35.00;
         fretePeso = 50.00;
         break;
-    case 2:
+    case 2: // Nordeste
         fretePadrao = 40.00;
         fretePeso = 60.00;
         break;
-    case 3:
+    case 3: // Sul
         fretePadrao = 30.00;
         fretePeso = 50.00;
         break;
-    case 4:
+    case 4: // Sudeste
         fretePadrao = 25.00;
         fretePeso = 45.00;
         break;
@@ -62,20 +69,21 @@ float calcularFrete(float peso, int regiao)
     }
 
     // Retorna o valor do frete com base no peso
-    if (peso <= 2)
+
+    for (int i = 0; i < compra.quantidadeProdutos; i++)
     {
-        return fretePadrao;
+        if (compra.produtos[i].peso > 2)
+        {
+            return fretePeso;
+        }
     }
-    else
-    {
-        return fretePeso;
-    }
+    return fretePadrao;
 }
 
 // Função para exibir a lista de produtos disponíveis
 void exibirListaProdutos(Produto listaProdutos[], int tamanho)
 {
-    printf("Lista de produtos disponiveis:\n");
+    printf("Lista de produtos disponiveis:\n\n");
     for (int i = 0; i < tamanho; i++)
     {
         printf("%d - %s - R$ %.2f\n", i + 1, listaProdutos[i].nome, listaProdutos[i].preco);
@@ -90,6 +98,7 @@ int solicitarRegiao()
     printf("1 - Norte\n2 - Nordeste\n3 - Sul\n4 - Sudeste\n");
     printf("\nRegiao: ");
     scanf("%d", &regiao);
+    limparBufferEntrada();
     if (regiao < 1 || regiao > 4)
     {
         printf("Região inválida. Tente novamente.\n");
@@ -105,10 +114,11 @@ int solicitarRegiao()
 void selecionarProdutos(Compra *compra, Produto listaProdutos[], int tamanho)
 {
     int escolha;
-    printf("Selecione os produtos (digite o numero do produto, -1 para encerrar)\n");
+    printf("\nSelecione os produtos (digite o numero do produto, -1 para encerrar)\n");
     while (1)
     {
         printf("Produto: ");
+        limparBufferEntrada();
         int resultado = scanf("%d", &escolha);
         if (resultado == 1)
         {
@@ -141,12 +151,5 @@ void limparConsole()
 #endif
 }
 
-// Função para limpar o buffer de entrada do teclado
-void limparBufferEntrada()
-{
-    int c;
-    while ((c = getchar()) != '\n' && c != EOF)
-        ;
-}
 // Finaliza o pré-processamento condicional
 #endif
