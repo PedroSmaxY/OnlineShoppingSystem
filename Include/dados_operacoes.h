@@ -20,7 +20,7 @@ typedef struct
 // Definindo a estrutura para a compra
 typedef struct
 {
-    Produto produtos[10]; // Array de produtos
+    Produto produtos[50]; // Array de produtos
     int quantidadeProdutos;
     double precoProdutos;
     double precoTotal;
@@ -118,6 +118,7 @@ void selecionarProdutos(Compra *compra, Produto listaProdutos[], int tamanho)
     {
         printf("Produto: ");
         int resultado = scanf("%d", &escolha);
+
         if (resultado == 1)
         {
             if (escolha == -1)
@@ -131,9 +132,9 @@ void selecionarProdutos(Compra *compra, Produto listaProdutos[], int tamanho)
             else
             {
                 compra->produtos[compra->quantidadeProdutos] = listaProdutos[escolha - 1];
-                compra->precoTotal += listaProdutos[escolha - 1].preco;
                 compra->precoProdutos += listaProdutos[escolha - 1].preco;
                 compra->quantidadeProdutos++;
+                compra->precoTotal += listaProdutos[escolha - 1].preco;
             }
         }
         limparBufferEntrada();
