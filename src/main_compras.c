@@ -4,7 +4,7 @@
 // Função principal do programa
 int main()
 {
-    // Configura a localização para o português
+    // Configura as acentuações para o português
     setlocale(LC_ALL, "Portuguese");
 
     // Lista de produtos disponíveis com seus códigos, nomes, preços e pesos
@@ -20,25 +20,25 @@ int main()
         {9, "Leite", 3.00, 1},
         {10, "Manteiga", 5.00, 0.3}};
 
-    // Limpa o console (função definida no arquivo de cabeçalho)
+    // Limpa o console
     limparConsole();
 
-    // Inicializa a estrutura de Compra com valores padrão
+    // Inicializa a estrutura de Compra
     Compra compra = {.quantidadeProdutos = 0, .precoTotal = 0.0, .precoFrete = 0.0};
 
-    // Exibe a lista de produtos disponíveis para o usuário
+    // Exibe a lista de produtos disponíveis
     exibirListaProdutos(listaProdutos, sizeof(listaProdutos) / sizeof(listaProdutos[0]));
 
-    // Solicita ao usuário que selecione os produtos desejados
+    // Solicita ao cliente que selecione os produtos desejados
     selecionarProdutos(&compra, listaProdutos, sizeof(listaProdutos) / sizeof(listaProdutos[0]));
 
     // Limpa o buffer de entrada do teclado
     limparBufferEntrada();
 
-    // Limpa o console novamente
+    // Limpa o console
     limparConsole();
 
-    // Solicita a região ao usuário
+    // Solicita a região ao cliente
     compra.regiao = solicitarRegiao();
 
     // Calcula o preço do frete com base no peso do produto e região do cliente
