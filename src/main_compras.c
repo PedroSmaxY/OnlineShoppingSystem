@@ -84,10 +84,10 @@ int main()
         printf("id:%d - %s - R$%.2f\n", compra.produtos[i].codigo,compra.produtos[i].nome, compra.produtos[i].preco);
     }
     printf("----------------------------------------\n");
-    printf("Preço dos produtos: R$%.2f", compra.precoProdutos);
+    printf("Valor dos produtos: R$%.2f", compra.precoProdutos);
     printf("\n----------------------------------------\n");
-    printf("Frete: R$%.2f", compra.precoFrete);
-    printf("\nPreço total: R$%.2f", compra.precoTotal);
+    printf("Valor do frete: R$%.2f", compra.precoFrete);
+    printf("\nValor total: R$%.2f", compra.precoTotal);
     printf("\n----------------------------------------\n");
     printf("Data e hora da compra: %s\n", compra.dataHoraCompra);
     printf("Previsâo de chegada: %s", compra.previsaoChegada);
