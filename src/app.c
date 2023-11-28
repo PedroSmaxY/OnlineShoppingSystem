@@ -1,6 +1,5 @@
 #include "functions.h"
-#include <time.h>
-// Função principal
+
 int main()
 {
     Produto listaProdutos[] = {
