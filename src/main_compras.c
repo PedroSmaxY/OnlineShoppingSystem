@@ -1,4 +1,4 @@
-#include "functions.h"
+#include "../include/dados_operacoes.h"
 
 int main()
 {
@@ -59,12 +59,12 @@ int main()
         printf("id:%d - %s - R$%.2f\n", compra.produtos[i].codigo,compra.produtos[i].nome, compra.produtos[i].preco);
     }
     printf("\n----------------------------------------\n");
-    printf("Preco dos produtos: R$ %.2f\n", compra.precoProdutos);
+    printf("Preço dos produtos: R$ %.2f\n", compra.precoProdutos);
     printf("Frete: R$ %.2f\n", compra.precoFrete);
     printf("Preco total: R$ %.2f", compra.precoTotal);
     printf("\n----------------------------------------\n");
     printf("Data e hora da compra: %s\n", compra.dataHoraCompra);
-    printf("Previsao de chegada: %s", compra.previsaoChegada);
+    printf("Previsâo de chegada: %s", compra.previsaoChegada);
     printf("\n----------------------------------------\n");
     return 0;
 }
