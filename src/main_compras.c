@@ -41,8 +41,8 @@ int main()
     // Solicita a região ao usuário
     compra.regiao = solicitarRegiao();
 
-    // Calcula o preço do frete com base no peso do primeiro produto (supondo que seja representativo)
-    compra.precoFrete = calcularFrete(compra.produtos[0].peso, compra.regiao);
+    // Calcula o preço do frete com base no peso do produto e região do cliente
+    compra.precoFrete = calcularFrete(compra);
 
     // Adiciona o preço do frete ao preço total da compra
     compra.precoTotal += compra.precoFrete;
@@ -70,7 +70,7 @@ int main()
     printf("\n----------------------------------------\n");
     printf("Resumo da Compra");
     printf("\n----------------------------------------\n");
-    printf("Regiao: %s", compra.regiao == 1 ? "norte" 
+    printf("Região: %s", compra.regiao == 1 ? "norte" 
     : compra.regiao == 2 ? "Nordeste"
     : compra.regiao == 3 ? "Sul" 
     : "Sudeste");
@@ -83,10 +83,11 @@ int main()
     {
         printf("id:%d - %s - R$%.2f\n", compra.produtos[i].codigo,compra.produtos[i].nome, compra.produtos[i].preco);
     }
+    printf("----------------------------------------\n");
+    printf("Preço dos produtos: R$%.2f", compra.precoProdutos);
     printf("\n----------------------------------------\n");
-    printf("Preço dos produtos: R$ %.2f\n", compra.precoProdutos);
-    printf("Frete: R$ %.2f\n", compra.precoFrete);
-    printf("Preco total: R$ %.2f", compra.precoTotal);
+    printf("Frete: R$%.2f", compra.precoFrete);
+    printf("\nPreço total: R$%.2f", compra.precoTotal);
     printf("\n----------------------------------------\n");
     printf("Data e hora da compra: %s\n", compra.dataHoraCompra);
     printf("Previsâo de chegada: %s", compra.previsaoChegada);
