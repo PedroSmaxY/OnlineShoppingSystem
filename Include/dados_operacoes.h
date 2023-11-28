@@ -78,7 +78,6 @@ float calcularFrete(Compra compra)
     }
 
     // Retorna o valor do frete com base no peso
-
     for (int i = 0; i < compra.quantidadeProdutos; i++)
     {
         if (compra.produtos[i].peso > 2)
