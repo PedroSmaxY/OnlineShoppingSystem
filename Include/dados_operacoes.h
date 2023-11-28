@@ -143,7 +143,7 @@ int solicitarRegiao()
 void selecionarProdutos(Compra *compra, Produto listaProdutos[], int tamanho)
 {
     int escolha;
-    printf("\nSelecione os produtos (digite o numero do produto, -1 para finalizar compra)\n");
+    printf("\nSelecione os produtos:\n(digite o numero do produto, -1 para finalizar compra)\n\n");
     while (1)
     {
         printf("Produto: ");
