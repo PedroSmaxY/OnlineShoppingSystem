@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <locale.h>
 #include <time.h>
 
 // Definindo a estrutura para os produtos
 typedef struct 
 {
+    int codigo;
     char nome[50];
     float preco;
     float peso;
@@ -15,6 +17,7 @@ typedef struct
 typedef struct {
     Produto produtos[10]; // Array de produtos
     int quantidadeProdutos;
+    double precoProdutos;
     double precoTotal;
     double precoFrete;
     int regiao;
@@ -71,7 +74,8 @@ int solicitarRegiao()
 {
     int regiao;
     printf("Selecione a regiao:\n");
-    printf("1 - Nordeste\n2 - Norte\n3 - Sul\n4 - Sudeste\n");
+    printf("1 - Norte\n2 - Nordeste\n3 - Sul\n4 - Sudeste\n");
+    printf("\nRegiao: ");
     scanf("%d", &regiao);
     if (regiao < 1 || regiao > 4) 
     {
@@ -87,11 +91,11 @@ int solicitarRegiao()
 void selecionarProdutos(Compra *compra, Produto listaProdutos[], int tamanho) 
 {
     int escolha;
+    printf("Selecione os produtos (digite o numero do produto, -1 para encerrar)\n");
     while (1) 
     {
-        printf("Selecione os produtos (digite o numero do produto, -1 para encerrar): ");
+        printf("Produto: ");
         int resultado = scanf("%d", &escolha);
-        printf("\n");
         if (resultado == 1) 
         {
             if (escolha == -1) 
@@ -105,11 +109,20 @@ void selecionarProdutos(Compra *compra, Produto listaProdutos[], int tamanho)
             else
             {
                 compra->produtos[compra->quantidadeProdutos] = listaProdutos[escolha - 1];
-                compra->precoTotal += listaProdutos[escolha - 1].preco; // Adiciona o preço do produto ao total
+                compra->precoTotal += listaProdutos[escolha - 1].preco; 
+                compra->precoProdutos += listaProdutos[escolha - 1].preco; 
                 compra->quantidadeProdutos++;
             }
         }
     }
+}
+
+void limparConsole() {
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
 }
 
 void limparBufferEntrada() 
