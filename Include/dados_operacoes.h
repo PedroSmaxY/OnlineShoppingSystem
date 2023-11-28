@@ -91,19 +91,25 @@ float calcularFrete(Compra compra)
 // Função para exibir a lista de produtos disponíveis
 void exibirListaProdutos(Produto listaProdutos[], int tamanho)
 {
-    printf("Lista de produtos disponiveis:\n\n");
+    printf("\n----------------------------------------\n");
+    printf("Lista de produtos disponiveis:");
+    printf("\n----------------------------------------\n");
     for (int i = 0; i < tamanho; i++)
     {
-        printf("%d - %s - R$ %.2f\n", i + 1, listaProdutos[i].nome, listaProdutos[i].preco);
+        printf("%d - %s - %.02fkg - R$ %.2f\n", i + 1, listaProdutos[i].nome, listaProdutos[i].peso, listaProdutos[i].preco);
     }
+    printf("\n----------------------------------------\n");
 }
 
 // Função para solicitar a região ao usuário
 int solicitarRegiao()
 {
     int regiao;
-    printf("Selecione a regiao:\n");
-    printf("1 - Norte\n2 - Nordeste\n3 - Sul\n4 - Sudeste\n");
+    printf("\n----------------------------------------\n");
+    printf("Selecione a regiao:");
+    printf("\n----------------------------------------\n");
+    printf("1 - Norte\n2 - Nordeste\n3 - Sul\n4 - Sudeste");
+    printf("\n----------------------------------------\n");
     printf("\nRegiao: ");
     scanf("%d", &regiao);
     limparBufferEntrada();
@@ -123,7 +129,7 @@ int solicitarRegiao()
 void selecionarProdutos(Compra *compra, Produto listaProdutos[], int tamanho)
 {
     int escolha;
-    printf("\nSelecione os produtos (digite o numero do produto, -1 para encerrar)\n");
+    printf("\nSelecione os produtos (digite o numero do produto, -1 para finalizar compra)\n");
     while (1)
     {
         printf("Produto: ");
@@ -154,11 +160,11 @@ void selecionarProdutos(Compra *compra, Produto listaProdutos[], int tamanho)
             }
             else
             {
-                printf("Produto %s adicionado.\n", listaProdutos[escolha - 1].nome);
                 compra->produtos[compra->quantidadeProdutos] = listaProdutos[escolha - 1];
                 compra->precoProdutos += listaProdutos[escolha - 1].preco;
                 compra->quantidadeProdutos++;
                 compra->precoTotal += listaProdutos[escolha - 1].preco;
+                printf("Produto %s adicionado, Valor do Carrinho: R$%.02f.\n", listaProdutos[escolha - 1].nome, compra->precoProdutos);
             }
         }
         else
