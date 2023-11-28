@@ -123,14 +123,28 @@ void selecionarProdutos(Compra *compra, Produto listaProdutos[], int tamanho)
         {
             if (escolha == -1)
             {
-                break;
+                if (compra->quantidadeProdutos == 0)
+                {
+                    printf("Nenhum produto selecionado.\n");
+                    continue;
+                }
+                else
+                {
+                    break;
+                }
             }
             else if (escolha < 1 || escolha > tamanho)
             {
                 printf("Número de produto inválido. Tente novamente.\n");
             }
+            else if (compra->quantidadeProdutos == 50)
+            {
+                printf("Limite de produtos atingido.\n");
+                break;
+            }
             else
             {
+                printf("Produto %s adicionado.\n", listaProdutos[escolha - 1].nome);
                 compra->produtos[compra->quantidadeProdutos] = listaProdutos[escolha - 1];
                 compra->precoProdutos += listaProdutos[escolha - 1].preco;
                 compra->quantidadeProdutos++;
