@@ -40,11 +40,11 @@ void limparBufferEntrada()
 // Função para limpar o console
 void limparConsole()
 {
-    #ifdef _WIN32
-        system("cls");
-    #else
-        system("clear");
-    #endif
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
 }
 
 // Função para calcular o preço do frete
@@ -72,7 +72,7 @@ float calcularFrete(Compra compra)
         fretePeso = 45.00;
         break;
     default:
-        printf("Regiao invalida\n");
+        printf("Região inválida\n");
         return -1; // Retorna -1 se a região for inválida
         break;
     }
@@ -96,7 +96,7 @@ void exibirListaProdutos(Produto listaProdutos[], int tamanho)
     printf("\n----------------------------------------\n");
     for (int i = 0; i < tamanho; i++)
     {
-        printf("%d - %s - %.02fkg - R$ %.2f\n", i + 1, listaProdutos[i].nome, listaProdutos[i].peso, listaProdutos[i].preco);
+        printf("%d - %s - %.02fkg - R$%.2f\n", i + 1, listaProdutos[i].nome, listaProdutos[i].peso, listaProdutos[i].preco);
     }
     printf("\n----------------------------------------\n");
 }
@@ -108,7 +108,21 @@ int solicitarRegiao()
     printf("\n----------------------------------------\n");
     printf("Selecione a regiao:");
     printf("\n----------------------------------------\n");
-    printf("1 - Norte\n2 - Nordeste\n3 - Sul\n4 - Sudeste");
+    printf("1 - Norte\n");
+    printf("frete padrao: R$35.00\n");
+    printf("frete por peso: R$50.00");
+    printf("\n----------------------------------------\n");
+    printf("2 - Nordeste\n");
+    printf("frete padrao: R$40.00\n");
+    printf("frete por peso: R$60.00");
+    printf("\n----------------------------------------\n");
+    printf("3 - Sul\n");
+    printf("frete padrao: R$30.00\n");
+    printf("frete por peso: R$50.00");
+    printf("\n----------------------------------------\n");
+    printf("4 - Sudeste\n");
+    printf("frete padrao: R$25.00\n");
+    printf("frete por peso: R$45.00");
     printf("\n----------------------------------------\n");
     printf("\nRegiao: ");
     scanf("%d", &regiao);
@@ -116,7 +130,7 @@ int solicitarRegiao()
     if (regiao < 1 || regiao > 4)
     {
         limparConsole();
-        printf("Regiao invalida. Tente novamente.\n");
+        printf("Região inválida. Tente novamente.\n");
         return solicitarRegiao(); // Chama recursivamente se a região for inválida
     }
     else
@@ -151,7 +165,7 @@ void selecionarProdutos(Compra *compra, Produto listaProdutos[], int tamanho)
             }
             else if (escolha < 1 || escolha > tamanho)
             {
-                printf("Numero de produto invalido. Tente novamente.\n");
+                printf("Número de produto inválido. Tente novamente.\n");
             }
             else if (compra->quantidadeProdutos == 50)
             {
@@ -169,7 +183,7 @@ void selecionarProdutos(Compra *compra, Produto listaProdutos[], int tamanho)
         }
         else
         {
-            printf("Numero de produto invalido. Tente novamente.\n");
+            printf("Número de produto inválido. Tente novamente.\n");
         }
         limparBufferEntrada();
     }
