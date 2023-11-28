@@ -72,7 +72,7 @@ float calcularFrete(Compra compra)
         fretePeso = 45.00;
         break;
     default:
-        printf("Região inválida\n");
+        printf("Regiao invalida\n");
         return -1; // Retorna -1 se a região for inválida
         break;
     }
@@ -130,7 +130,7 @@ int solicitarRegiao()
     if (regiao < 1 || regiao > 4)
     {
         limparConsole();
-        printf("Região inválida. Tente novamente.\n");
+        printf("Regiao invalida. Tente novamente.\n");
         return solicitarRegiao(); // Chama recursivamente se a região for inválida
     }
     else
@@ -165,7 +165,7 @@ void selecionarProdutos(Compra *compra, Produto listaProdutos[], int tamanho)
             }
             else if (escolha < 1 || escolha > tamanho)
             {
-                printf("Número de produto inválido. Tente novamente.\n");
+                printf("Numero de produto invalido. Tente novamente.\n");
             }
             else if (compra->quantidadeProdutos == 50)
             {
@@ -183,7 +183,7 @@ void selecionarProdutos(Compra *compra, Produto listaProdutos[], int tamanho)
         }
         else
         {
-            printf("Número de produto inválido. Tente novamente.\n");
+            printf("Numero de produto invalido. Tente novamente.\n");
         }
         limparBufferEntrada();
     }
