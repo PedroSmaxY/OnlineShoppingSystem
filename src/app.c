@@ -1,132 +1,37 @@
-#include <stdio.h>
 #include "functions.h"
-#include <stdlib.h>
-#include <locale.h>
-#include <time.h>
 
-struct produto
-{
-    int codigo;
-    char nome[50];
-    float preco;
-    float peso;
-};
-
-void imprimir_produtos(struct produto produtos[], int num_produtos)
-{
-    printf("Lista de produtos:\n");
-    printf("Codigo | Nome | Preco\n");
-    printf("-------+------+-------\n");
-    for (int i = 0; i < num_produtos; i++)
-    {
-        printf("Codigo: %d Nome: %s Preco: R$ %.2f\n", produtos[i].codigo, produtos[i].nome, produtos[i].preco);
-    }
-}
-
-int encontrar_produto(struct produto produtos[], int num_produtos, int codigo)
-{
-    for (int i = 0; i < num_produtos; i++)
-    {
-        if (produtos[i].codigo == codigo)
-        {
-            return i;
-        }
-    }
-    return -1;
-}
-
+// Função principal
 int main()
 {
-    setlocale(LC_ALL, "");
-    struct produto produtos[NUM_PRODUTOS] = {
-        {1, "Arroz", 10.00, 0.2},
-        {2, "Feijao", 8.00, 1},
-        {3, "Macarrao", 5.00, 0.5},
-        {4, "Farinha", 4.00, 0.5},
-        {5, "Acucar", 3.00, 0.5},
-        {6, "Cafe", 6.00, 0.5},
-        {7, "Oleo", 7.00, 0.5},
-        {8, "Sal", 2.00, 0.5},
-        {9, "Leite", 3.00, 0.5},
-        {10, "Manteiga", 5.00, 0.5},
-    };
+    Produto listaProdutos[] = {
+        {"Produto A", 20.0, 1.5},
+        {"Produto B", 30.0, 3.0},
+        {"Produto C", 15.0, 0.5}};
 
-    float peso, valorProduto;
-    int index, regiao, codigo;
+    Compra compra;
+    compra.precoTotal = 0.0;
+    compra.precoFrete = 0.0;
 
-    while (1)
+    compra.regiao = solicitarRegiao();
+    exibirListaProdutos(listaProdutos, sizeof(listaProdutos) / sizeof(listaProdutos[0]));
+    selecionarProdutos(&compra, listaProdutos, sizeof(listaProdutos) / sizeof(listaProdutos[0]));
+
+    compra.precoFrete = calcularFrete(compra.produtos[0].peso); // Supondo que o peso do primeiro produto seja representativo
+
+    strcpy(compra.dataHoraCompra, "27/11/2023 14:30");
+    strcpy(compra.previsaoChegada, "04/12/2023");
+
+    printf("\nResumo da compra:\n");
+    printf("Regiao: %d\n", compra.regiao);
+    printf("Produtos selecionados:\n");
+    for (int i = 0; i < compra.quantidadeProdutos; i++)
     {
-        while (1)
-        {
-            imprimir_produtos(produtos, NUM_PRODUTOS);
-
-            printf("\nDigite o código do produto (0 para sair): ");
-            scanf("%d", &codigo);
-
-            if (codigo == 0)
-            {
-                break;
-            }
-
-            if (index == -1)
-            {
-                printf("Produto não encontrado.\n");
-            }
-            else
-            {
-                return produtos[index].preco;
-            }
-
-            if (codigo == 0)
-            {
-                break;
-            }
-        }
-
-        printf("\nInforme a região: \n");
-        printf("Norte: 1\n");
-        printf("Nordeste: 2\n");
-        printf("Sul: 3\n");
-        printf("Sudeste: 4\n");
-        printf("\nDigite o código da região: ");
-        scanf("%d", &regiao);
-
-        printf("\nDigite o peso do produto em Kg: ");
-        scanf("%f", &peso);
-
-        float valorFrete = calcularFrete(regiao, peso);
-
-        if (valorFrete == -1.0)
-        {
-            return 1;
-        }
-
-        float totalCompra = valorProduto + valorFrete;
-
-        time_t t;
-        struct tm *data;
-        t = time(NULL);
-        data = localtime(&t);
-
-        printf("\n\n");
-        printf("Resumo da Compra\n");
-        printf("Data e Hora da Compra: %d/%d/%d %d:%d\n", data->tm_mday, data->tm_mon + 1, data->tm_year + 1900, data->tm_hour, data->tm_min);
-        printf("\nValor do Produto: R$ %.2f\n", valorProduto);
-
-        printf("Região: %s\n", regiao == 1   ? "Norte"
-                               : regiao == 2 ? "Nordeste"
-                               : regiao == 3 ? "Sul"
-                               : regiao == 4 ? "Sudeste"
-                                             : "Região inválida");
-
-        printf("Valor do Frete: R$ %.2f\n", valorFrete);
-        printf("Valor Total da Compra: R$ %.2f\n", totalCompra);
-
-        data->tm_mday += 7;
-        mktime(data);
-
-        printf("Data prevista para entrega: %02d/%02d/%d\n", data->tm_mday, data->tm_mon + 1, data->tm_year + 1900);
-
-        return 0;
+        printf("- %s - R$ %.2f\n", compra.produtos[i].nome, compra.produtos[i].preco);
     }
+    printf("Preco total: R$ %.2f\n", compra.precoTotal);
+    printf("Frete: R$ %.2f\n", compra.precoFrete);
+    printf("Data e hora da compra: %s\n", compra.dataHoraCompra);
+    printf("Previsao de chegada: %s\n", compra.previsaoChegada);
+
+    return 0;
 }
