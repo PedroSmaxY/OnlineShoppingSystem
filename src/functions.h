@@ -11,13 +11,12 @@ typedef struct
 } Produto;
 
 // Definindo a estrutura para a compra
-typedef struct 
-{
-    int regiao;
-    Produto produtos[10];
+typedef struct {
+    Produto produtos[10]; // Array de produtos
     int quantidadeProdutos;
-    float precoTotal;
-    float precoFrete;
+    double precoTotal;
+    double precoFrete;
+    int regiao;
     char dataHoraCompra[20];
     char previsaoChegada[20];
 } Compra;
@@ -90,21 +89,24 @@ void selecionarProdutos(Compra *compra, Produto listaProdutos[], int tamanho)
     while (1) 
     {
         printf("Selecione os produtos (digite o numero do produto, -1 para encerrar): ");
-        scanf("%d", &escolha);
+        int resultado = scanf("%d", &escolha);
         printf("\n");
-        if (escolha == -1) 
+        if (resultado == 1) 
         {
-            break;
-        }
-        if (escolha >= 1 && escolha <= tamanho) 
-        {
-            compra->produtos[compra->quantidadeProdutos] = listaProdutos[escolha - 1];
-            compra->precoTotal += listaProdutos[escolha - 1].preco;
-            compra->quantidadeProdutos++;
-        } 
-        else 
-        {
-            printf("Escolha invalida. Tente novamente.\n");
+            if (escolha == -1) 
+            {
+                break;
+            }
+            else if (escolha < 1 || escolha > tamanho)
+            {
+            printf("Número de produto inválido. Tente novamente.\n");
+            }
+            else
+            {
+                compra->produtos[compra->quantidadeProdutos] = listaProdutos[escolha - 1];
+                compra->precoTotal += listaProdutos[escolha - 1].preco; // Adiciona o preço do produto ao total
+                compra->quantidadeProdutos++;
+            }
         }
     }
 }

@@ -8,9 +8,7 @@ int main()
         {"Produto B", 30.0, 3.0},
         {"Produto C", 15.0, 0.5}};
 
-    Compra compra;
-    compra.precoTotal = 0.0;
-    compra.precoFrete = 0.0;
+    Compra compra = { .quantidadeProdutos = 0, .precoTotal = 0.0, .precoFrete = 0.0 };
 
     exibirListaProdutos(listaProdutos, sizeof(listaProdutos) / sizeof(listaProdutos[0]));
     selecionarProdutos(&compra, listaProdutos, sizeof(listaProdutos) / sizeof(listaProdutos[0]));
