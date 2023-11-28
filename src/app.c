@@ -1,5 +1,5 @@
 #include "functions.h"
-
+#include <time.h>
 // Função principal
 int main()
 {
@@ -12,14 +12,25 @@ int main()
     compra.precoTotal = 0.0;
     compra.precoFrete = 0.0;
 
-    compra.regiao = solicitarRegiao();
     exibirListaProdutos(listaProdutos, sizeof(listaProdutos) / sizeof(listaProdutos[0]));
     selecionarProdutos(&compra, listaProdutos, sizeof(listaProdutos) / sizeof(listaProdutos[0]));
 
-    compra.precoFrete = calcularFrete(compra.produtos[0].peso); // Supondo que o peso do primeiro produto seja representativo
+    limparBufferEntrada();
 
-    strcpy(compra.dataHoraCompra, "27/11/2023 14:30");
-    strcpy(compra.previsaoChegada, "04/12/2023");
+    compra.regiao = solicitarRegiao();
+    compra.precoFrete = calcularFrete(compra.produtos[0].peso, compra.regiao); // Supondo que o peso do primeiro produto seja representativo
+
+    time_t t;
+    struct tm *data;
+    t = time(NULL);
+    data = localtime(&t);
+
+    sprintf(compra.dataHoraCompra, "%02d/%02d/%d", data->tm_mday, data->tm_mon + 1, data->tm_year + 1900);
+
+    data->tm_mday += 7;
+    mktime(data);
+
+    sprintf(compra.previsaoChegada, "%02d/%02d/%d", data->tm_mday, data->tm_mon + 1, data->tm_year + 1900);
 
     printf("\nResumo da compra:\n");
     printf("Regiao: %d\n", compra.regiao);
