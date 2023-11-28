@@ -1,6 +1,6 @@
 // Evita que o arquivo de cabeçalho seja incluído múltiplas vezes durante a compilação
-#ifndef FUNCTIONS_H
-#define FUNCTIONS_H
+#ifndef DADOS_OPERACOES_H
+#define DADOS_OPERACOES_H
 
 // Inclui as bibliotecas necessárias
 #include <stdio.h>
@@ -141,7 +141,7 @@ void selecionarProdutos(Compra *compra, Produto listaProdutos[], int tamanho)
     }
 }
 
-// Função para limpar o console (dependente do sistema operacional)
+// Função para limpar o console
 void limparConsole()
 {
     #ifdef _WIN32
