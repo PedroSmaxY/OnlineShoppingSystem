@@ -13,8 +13,8 @@ typedef struct
 {
     int codigo;
     char nome[50];
-    float preco;
-    float peso;
+    double preco;
+    double peso;
 } Produto;
 
 // Definindo a estrutura para a compra
@@ -51,7 +51,7 @@ void limparConsole()
 // Função para calcular o preço do frete
 void calcularFrete(Compra *compra)
 {
-    float fretePadrao, fretePeso;
+    double fretePadrao, fretePeso;
 
     // Calcula os valores do frete com base na região
     switch (compra->regiao)
