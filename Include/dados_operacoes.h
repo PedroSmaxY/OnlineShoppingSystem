@@ -101,7 +101,7 @@ void exibirListaProdutos(Produto listaProdutos[], int tamanho)
     printf("\n----------------------------------------\n");
     for (int i = 0; i < tamanho; i++)
     {
-        printf("%d - %s - %.02fKg - R$%.2f\n", i + 1, listaProdutos[i].nome, listaProdutos[i].peso, listaProdutos[i].preco);
+        printf("%d - %s - %.02fKg - R$%.2f\n", listaProdutos[i].codigo, listaProdutos[i].nome, listaProdutos[i].peso, listaProdutos[i].preco);
     }
     printf("\n----------------------------------------\n");
 }
