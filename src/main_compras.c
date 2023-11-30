@@ -39,58 +39,15 @@ int main()
     limparConsole();
 
     // Solicita a região ao cliente
-    compra.regiao = solicitarRegiao();
+    solicitarRegiao(&compra);
 
     // Calcula o preço do frete com base no peso do produto e região do cliente
-    compra.precoFrete = calcularFrete(compra);
-
-    // Adiciona o preço do frete ao preço total da compra
-    compra.precoTotal += compra.precoFrete;
-
-    // Obtém a data e hora atuais
-    time_t t;
-    struct tm *data;
-    t = time(NULL);
-    data = localtime(&t);
-
-    // Formata a data e hora da compra
-    sprintf(compra.dataHoraCompra, "%02d/%02d/%d %02d:%02d", data->tm_mday, data->tm_mon + 1, data->tm_year + 1900, data->tm_hour, data->tm_min);
-
-    // Adiciona 7 dias à data atual para obter a previsão de chegada
-    data->tm_mday += 7;
-    mktime(data);
-
-    // Formata a previsão de chegada
-    sprintf(compra.previsaoChegada, "%02d/%02d/%d", data->tm_mday, data->tm_mon + 1, data->tm_year + 1900);
+    calcularFrete(&compra);
 
     // Limpa o console mais uma vez
     limparConsole();
 
-    // Exibe um resumo da compra
-    printf("\n----------------------------------------\n");
-    printf("Resumo da Compra");
-    printf("\n----------------------------------------\n");
-    printf("Regiao: %s", compra.regiao == 1 ? "Norte" 
-    : compra.regiao == 2 ? "Nordeste"
-    : compra.regiao == 3 ? "Sul" 
-    : "Sudeste");
-
-    printf("\n----------------------------------------\n");
-    printf("Produtos selecionados:\n\n");
-
-    // Exibe os produtos selecionados
-    for (int i = 0; i < compra.quantidadeProdutos; i++)
-    {
-        printf("id:%d - %s - R$%.2f\n", compra.produtos[i].codigo,compra.produtos[i].nome, compra.produtos[i].preco);
-    }
-    printf("----------------------------------------\n");
-    printf("Valor dos produtos: R$%.2f", compra.precoProdutos);
-    printf("\n----------------------------------------\n");
-    printf("Valor do frete: R$%.2f", compra.precoFrete);
-    printf("\nValor total: R$%.2f", compra.precoTotal);
-    printf("\n----------------------------------------\n");
-    printf("Data e hora da compra: %s\n", compra.dataHoraCompra);
-    printf("Previsao de chegada: %s", compra.previsaoChegada);
-    printf("\n----------------------------------------\n");
+    // Exibe o resumo da compra
+    ResumoDaCompra(&compra);
     return 0;
 }
