@@ -151,7 +151,7 @@ void selecionarProdutos(Compra *compra, Produto listaProdutos[], int tamanho)
     printf("\nSelecione os produtos:\n(digite o numero do produto, -1 para finalizar compra)\n\n");
     while (1)
     {
-        printf("Produto: ");
+        printf("Produto (-2 para ver a lista): ");
         int resultado = scanf("%d", &escolha);
 
         if (resultado == 1)
@@ -167,6 +167,11 @@ void selecionarProdutos(Compra *compra, Produto listaProdutos[], int tamanho)
                 {
                     break;
                 }
+            }
+            else if (escolha == -2)
+            {
+                exibirListaProdutos(listaProdutos, tamanho);
+                printf("\n(digite o numero do produto ou -1 para finalizar compra)\n\n");
             }
             else if (escolha < 1 || escolha > tamanho)
             {
