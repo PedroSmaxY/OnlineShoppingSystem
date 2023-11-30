@@ -104,7 +104,7 @@ void exibirListaProdutos(Produto listaProdutos[], int tamanho)
     {
         printf("%d - %s - %.02fKg - R$%.2f\n", listaProdutos[i].codigo, listaProdutos[i].nome, listaProdutos[i].peso, listaProdutos[i].preco);
     }
-    printf("\n----------------------------------------\n");
+    printf("----------------------------------------\n");
 }
 
 // Função para solicitar a região ao usuário
@@ -164,7 +164,7 @@ void solicitarRegiao(Compra *compra)
 void selecionarProdutos(Compra *compra, Produto listaProdutos[], int tamanho)
 {
     int escolha;
-    printf("\nSelecione os produtos:\n(digite o numero do produto, -1 para finalizar compra)\n\n");
+    printf("Selecione os produtos:\n(digite o numero do produto, -1 para finalizar compra)\n\n");
     while (1)
     {
         printf("Produto (-2 para ver a lista): ");
@@ -187,7 +187,7 @@ void selecionarProdutos(Compra *compra, Produto listaProdutos[], int tamanho)
             else if (escolha == -2)
             {
                 exibirListaProdutos(listaProdutos, tamanho);
-                printf("\n(digite o numero do produto ou -1 para finalizar compra)\n\n");
+                printf("(digite o numero do produto ou -1 para finalizar compra)\n\n");
             }
             else if (escolha < 1 || escolha > tamanho)
             {
