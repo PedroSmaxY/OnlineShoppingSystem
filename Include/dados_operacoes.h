@@ -26,6 +26,7 @@ typedef struct
     double precoTotal;
     double precoFrete;
     int regiao;
+    char nomeRegiao[20];
     char dataHoraCompra[20];
     char previsaoChegada[20];
 } Compra;
@@ -140,6 +141,21 @@ void solicitarRegiao(Compra *compra)
     }
     else
     {
+        switch (regiao)
+        {
+        case 1:
+            sprintf(compra->nomeRegiao, "Norte");
+            break;
+        case 2:
+            sprintf(compra->nomeRegiao, "Nordeste");
+            break;
+        case 3:
+            sprintf(compra->nomeRegiao, "Sul");
+            break;
+        case 4:
+            sprintf(compra->nomeRegiao, "Sudeste");
+            break;
+        }
         compra->regiao = regiao;
     }
 }
@@ -226,14 +242,9 @@ void ResumoDaCompra(Compra *compra)
     printf("\n----------------------------------------\n");
     printf("Resumo da Compra");
     printf("\n----------------------------------------\n");
-    printf("Regiao: %s", compra->regiao == 1 ? "Norte" 
-    : compra->regiao == 2 ? "Nordeste"
-    : compra->regiao == 3 ? "Sul" 
-    : "Sudeste");
-
+    printf("Regiao: %s", compra->nomeRegiao);
     printf("\n----------------------------------------\n");
     printf("Produtos selecionados:\n\n");
-
     // Exibe os produtos selecionados
     for (int i = 0; i < compra->quantidadeProdutos; i++)
     {
