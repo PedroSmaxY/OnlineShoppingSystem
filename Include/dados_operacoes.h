@@ -76,7 +76,7 @@ void calcularFrete(Compra *compra)
         printf("Regiao invalida\n");
         break;
     }
-    // Retorna o valor do frete com base no peso
+    // seta o valor do frete com base no peso
     for (int i = 0; i < compra->quantidadeProdutos; i++)
     {
         if (compra->produtos[i].peso > 2)
@@ -215,7 +215,7 @@ void selecionarProdutos(Compra *compra, Produto listaProdutos[], int tamanho)
     }
 }
 
-// Função para obter a data e hora atuais
+// Função para setar a data e hora atuais
 void dataHora(Compra *compra)
 {
     // Obtém a data e hora atuais
