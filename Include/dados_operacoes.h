@@ -73,7 +73,7 @@ void calcularFrete(Compra *compra)
         fretePeso = 45.00;
         break;
     default:
-        printf("Regiao invalida\n"); // Retorna -1 se a região for inválida
+        printf("Regiao invalida\n");
         break;
     }
     // Retorna o valor do frete com base no peso
