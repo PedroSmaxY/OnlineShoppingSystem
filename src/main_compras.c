@@ -9,16 +9,16 @@ int main()
 
     // Lista de produtos disponíveis com seus códigos, nomes, preços e pesos
     Produto listaProdutos[] = {
-        {1, "Arroz", 10.00, 1},
-        {2, "Feijao", 8.00, 1},
-        {3, "Macarrao", 5.00, 0.5},
-        {4, "Farinha", 4.00, 0.5},
-        {5, "Peixe", 3.00, 2.1},
-        {6, "Cafe", 6.00, 0.6},
-        {7, "Oleo", 7.00, 1},
-        {8, "Sal", 2.00, 2.5},
-        {9, "Leite", 3.00, 1},
-        {10, "Manteiga", 5.00, 0.3}};
+        {1, "Arroz", 10.99, 1},
+        {2, "Feijao", 9.99, 1},
+        {3, "Macarrao", 6.99, 0.5},
+        {4, "Farinha", 6.99, 0.5},
+        {5, "Atum", 29.99, 2.5},
+        {6, "Cafe",11.99, 0.6},
+        {7, "Oleo", 7.99, 1},
+        {8, "Sal", 9.99, 2.5},
+        {9, "Leite", 3.99, 1},
+        {10, "Manteiga", 12.99, 0.5}};
 
     // Limpa o console
     limparConsole();
