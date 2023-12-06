@@ -43,4 +43,4 @@ This console-based application simulates an online shopping system where users c
 - Pedro Carvalho ( GitHub: [Phscarvalho](https://github.com/Phscarvalho) )
 
 ## License
-### This project is licensed under the MIT License - see the [LICENSE](https://github.com/PedroSmaxY/sistema-de-vendas/blob/main/LICENSE) file for details.
+### This project is licensed under the MIT License - see the [LICENSE](https://github.com/PedroSmaxY/OnlineShoppingSystem/blob/main/LICENSE) file for details.
