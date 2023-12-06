@@ -1,5 +1,9 @@
 # Online Shopping System
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## Overview
+
 This console-based application simulates an online shopping system where users can select products, specify their region, and view a summary of their purchase. The program is written in C and was developed as a project for the Foundations of Programming course during the second semester at Universidade Veiga de Almeida.
 
 ## Features
@@ -11,16 +15,20 @@ This console-based application simulates an online shopping system where users c
 
 ## Screenshots
 
-### Starting
+- Starting
+
 ![Captura de Tela 2023-12-05 às 9 41 29 PM](https://github.com/PedroSmaxY/sistema-de-vendas/assets/127573080/f3895ba3-6309-4f0a-ba71-e6f6cc5193f4)
 
-### Adding products to the user's cart
+- Adding products to the user's cart
+
 ![Captura de Tela 2023-12-05 às 9 48 38 PM](https://github.com/PedroSmaxY/sistema-de-vendas/assets/127573080/1140613e-dd51-4372-8ec9-d64192e31ece)
 
-### Selecting user's region
+- Selecting user's region
+
 ![Captura de Tela 2023-12-05 às 9 42 11 PM](https://github.com/PedroSmaxY/sistema-de-vendas/assets/127573080/088d1a8e-b20e-4cf3-bbc2-fb3dd443c759)
 
-### Final summary
+- Final summary
+
 ![Captura de Tela 2023-12-05 às 9 42 32 PM](https://github.com/PedroSmaxY/sistema-de-vendas/assets/127573080/cbf32923-ef22-4bb7-bb8b-b87ceb771ae0)
 
 ## How to Use
