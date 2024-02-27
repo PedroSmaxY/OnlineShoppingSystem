@@ -48,5 +48,7 @@ int main()
     // Displays the purchase summary
     PurchaseSummary(&purchase);
 
+    getch();
+
     return 0;
 }
