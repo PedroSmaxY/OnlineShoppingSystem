@@ -35,7 +35,7 @@ This console-based application simulates an online shopping system where users c
 
 1. Clone the repository.
    ```bash
-   git clone https://github.com/PedroSmaxY/sistema-de-vendas.git
+   git clone https://github.com/PedroSmaxY/OnlineShoppingSystem.git
    ```
 3. Compile the program using a C compiler (e.g., GCC).
    ```bash
